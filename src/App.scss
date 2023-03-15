@@ -1,0 +1,14 @@
+.App {
+    text-align: center;
+    transform: translateY(25%);
+
+    .progressbar-container {
+        margin: 20px 0;
+
+        &__progress {
+            display: inline-block;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+@import '../../Styles/media-queries.scss';
+
+.button {
+    border-radius: 15px;
+    background: linear-gradient(180deg, #9b7efa 0%, #7e5ae1 100%);
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 80px;
+    font-weight: 600;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    line-height: 22px;
+
+    &:active {
+        background: linear-gradient(180deg, #7560b9 0%, #7e5ae1 100%);
+    }
+
+    &__prev,
+    &__next {
+        position: absolute;
+        top: 46.3%;
+
+        @media #{$tablet} {
+            top: 44%;
+        }
+    }
+
+    &__prev {
+        left: 12px;
+
+        @media #{$tablet} {
+            left: 20px;
+        }
+    }
+
+    &__next {
+        right: 12px;
+
+        @media #{$tablet} {
+            right: 20px;
+        }
+    }
+
+    &__new-image {
+        margin: 10px;
+        width: 110px;
+
+        @media #{$tablet} {
+            width: 120px;
+        }
+    }
+}
