@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../Store/hooks';
-import { addCats, selectCats } from '../../Store/rootReducer';
+import { selectCats } from '../../Store/rootReducer';
+import { fetchCats } from '../../Store/api';
 import { Slide } from './Slide/Slide';
 import './Slider.scss';
-import { useFetchCats } from '../../Store/hooks';
 import { Button } from '../Button/Button';
 import ProgressBar from '@ramonak/react-progress-bar';
 import { CLASSES } from './constants';
@@ -11,7 +11,6 @@ import { CLASSES } from './constants';
 export function Slider(): JSX.Element {
     const { cats } = useAppSelector(selectCats);
     const dispatch = useAppDispatch();
-    const { fetchedCats } = useFetchCats();
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [progress, setProgress] = useState(10);
@@ -37,15 +36,15 @@ export function Slider(): JSX.Element {
     };
 
     useEffect(() => {
-        dispatch(addCats(fetchedCats));
-    }, [fetchedCats]);
+        dispatch(fetchCats());
+    }, []);
 
     return (
         <>
             <div className={CLASSES.SLIDER}>
                 <div className={CLASSES.SLIDES_CONTAINER}>
                     {cats.map((cat, index) => (
-                        <Slide {...cat} key={cat.id} isActive={index === activeIndex} />
+                        <Slide {...cat} key={index} isActive={index === activeIndex} />
                     ))}
                 </div>
 
